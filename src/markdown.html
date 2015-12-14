@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>STATS BAYES TTEST Extension Command</title>
+
+<link rel="stylesheet" type="text/css" href="extsyntax.css" />
+
+</head>
+
+<body>
+<h1>STATS BAYES TTEST Extension Command</h1>
+
+<p>Calculate Bayesian T Test</p>
+<div class="syntax">
+<p>STATS BAYES TTEST VARIABLES = <em>one or two variables to test</em><sup>&#42;</sup><br/>
+GROUP = <em>group variable</em><br/>
+TESTVALUE = <em>test value</em><br/>
+PAIRED = NO<sup>&#42;&#42;</sup> or YES<br/>
+</p>
+
+<p>/OPTIONS 
+POSTERIOR = YES<sup>&#42;&#42;</sup> or NO<br/>
+ITERATIONS = <em>number</em><br/>
+PRIORSCALE = <em>"one or more prior parameter values"</em><br/>
+</p>
+<p>/SAVE WORKSPACE = CLEAR<sup>&#42;&#42;</sup> or RETAIN<br/>
+MODELFILE = <em>"file specification for results"</em>
+</p>
+
+<p><sup>&#42;</sup> Required<br/>
+<sup>&#42;&#42;</sup> Default</p>
+</div>
+<p>STATS BAYES TTEST /HELP prints this information and does nothing else.</p>
+
+<pre class="example"><code>STATS BAYES TTEST salary
+GROUP = gender
+/OPTIONS PRIORSCALE = ".7071 1.414".
+</code></pre>
+
+<p>Split files and weights are not honored by this procedure.
+Cases with missing values are omitted.</p>
+
+<p>This procedure calculates the Bayes factors and the posterior probabilities for
+a t test.  The t test can be a one-sample test against a constant, an unpaired test, or a paired test.
+The posterior distributions for a single prior scale value can also be displayed.
+</p>
+<p>The Bayes factor is the relative evidence in the data for one model over another.  See the reference below for an introductory discussion.</p>
+
+<p><strong>VARIABLES</strong>
+Specify either one or two test variables.
+For an unpaired test, specify one variable and a group variable or one variable and a test value. 
+For a paired test specify two variables and no group variable.  
+The test variables must have a scale (continuous) measurement level.</p>
+
+<p><strong>GROUP</strong> Specify a group identification variable
+if doing an unpaired test with two groups of cases.  Otherwise omit this keyword.  The group
+variable must have exactly two distinct, non-missing values.</p>
+
+<p><strong>TESTVALUE</strong> For a one-sample test against a specific value,
+specify the value here, and do not specify a group variable.</p>
+
+<h2>OPTIONS</h2>
+
+<p><strong>POSTERIOR</strong> specifies whether the posterior distribution of
+the test is displayed.  The posterior distribution
+for the first prior scale value listed is used.</p>
+
+<p><strong>ITERATIONS</strong> specifies the number of iterations (samples) to
+use for the posterior.  The default value is 1000.</p>
+
+<p><strong>PRIORSCALE</strong> specifies the scales for the prior.
+Multiple values can be entered.  The entire set of values must be
+enclosed in quotation marks.
+The default value is .7071 (sqrt(2)/2).
+The scale parameter controls the expected true standardized effect size.
+For a particular scale 50% of the true effect sizes are within the interval. Values corresponding to the
+Bayesian regression procedure are medium: (-.7071, .7071); wide: (-1, 1), and ultrawide: (-1.414, 1.414).
+One or more of these keywords or other numbers can be entered.
+</p>
+
+<h2>SAVE</h2>
+
+<p><strong>WORKSPACE</strong> specifies whether the workspace should be cleared
+or retained after the procedure completes.  By default, it is cleared.</p>
+
+<p><strong>MODELFILE</strong> specifies a file name to which the model information will
+be written as an R workspace for later use.</p>
+
+<h3>Acknowledgements</h3>
+This procedure uses the R BayesFactor package.
+
+<p>Richard D. Morey and Jeffrey N. Rouder (2015). BayesFactor: Computation of Bayes
+  Factors for Common Designs.</br>
+  http://CRAN.R-project.org/package=BayesFactor
+</p>
+
+<p>&copy; Copyright IBM Corp. 1989, 2015</p>
+
+</body>
+
+</html>
+

@@ -1,0 +1,17 @@
+Name: STATS BAYES TTEST
+Dialog-Specs: STATS_BAYES_TTEST.spd
+Command-Specs: STATS_BAYES_TTEST.xml
+Code-Files: STATS_BAYES_TTEST.R
+Misc-Files: extsyntax.css,IBMdialogicon.png,markdown.html
+Summary: Bayesian T Test
+Description: This procedure calculates the Bayes factors and the poste
+ rior probabilities for a t test. The t test can be a one-sample test 
+ against a constant, an unpaired test, or a paired test. The posterior
+  distributions for a single prior scale value can also be displayed.
+Author: JKP, IBM SPSS
+Version: 1.0.0
+Product-Version: 18
+Date: 9/23/2015
+Categories: statistics, Bayes, ttest
+Plugins: R
+R-Packages: BayesFactor

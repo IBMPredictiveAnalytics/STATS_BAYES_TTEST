@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>Bayesian T Test</title>
+<STYLE TYPE="text/css"> 
+<!-- 
+
+H1 {font-weight:bold; color:#006699; font-family:Verdana, Arial, sans-serif;font-size:125%; }
+H2 {font-weight:bold; color:#006699; font-family:Verdana, Arial, sans-serif;font-size:110%; }
+TABLE {font-size:100%;font-family:Verdana, Arial, sans-serif;}
+
+/* paragraph tags */
+.step {text-indent: -1.3em; margin-left:1.3em; margin-top: 0px;}
+.menuselection {margin-left:10px}
+.bullet {list-style-type: disc;margin-top:12px; margin-left:36px; text-indent:-1em; }
+.codeblock {background-color: #ffffe6; display:block; margin-left:5px; padding:5px;font-family:"courier new",monospace; }
+
+/* inline tags */
+.code {font-family: Courier,fixed pitch;}                           /*** used to tag pieces of code (syntax, Python, R, HTML, etc.)   ***/
+.screen {font-weight:bold; color:#408080}                       /*** used refer to on-screen text ***/
+.name {font-style: italic}                                                       /*** used to tag names, such as variable names, file names, and so forth ***/
+.runinhead {font-weight: bold} 
+.superscript {vertical-align:super; font-size:80%}
+.subscript {vertical-align:sub; font-size:80%}
+.symbol {font-family: Symbol}
+
+--> 
+</STYLE>
+</head>
+<body>
+<h1>Bayesian T Test</h1>
+<p>The procedure calculates the Bayes factors and the posterior probabilities for
+a t test.  The t test can be a one-sample test against a constant, an unpaired test, or a paired test.
+The posterior distributions for a single prior scale factor can also be displayed.
+</p>
+<p>The Bayes factor is the relative evidence in the data for one model over another.  See the reference below for an introductory discussion.</p>
+
+<p>Split files and the Statistics case weights are not supported by this procedure.
+Cases with missing values will be omitted from the analysis.</p>
+
+<p><span class="runinhead">Variables to Test</span> Specify either one or two test variables.
+For an unpaired test, specify one variable and a group variable or one variable and a test value. 
+For a paired test specify two variables.</p>
+
+<p><span class="runinhead">Group</span> Specify a group identification variable
+if doing an unpaired test with two groups.  Otherwise leave this field empty.  The group
+variable must have exactly two distinct non-missing values.</p>
+
+<p><span class="runinhead">Paired test</span> Check this box to do a paired test.  In that
+case there must be two variables in the test field and no group variable.</p>
+
+<p><span class="runinhead">Test Value</span> For a one-sample test against a specific value,
+enter the value here and leave the group field empty.</p>
+
+<h2>Options</h2>
+
+<p><span class="runinhead">Display posterior distribution</span>
+Check this box to display the posterior distribution
+for the first prior scale value listed.
+</p>
+
+<p><span class="runinhead">Prior Scale Values</span>
+Choose the scales for the prior on all the standardized slopes.  Multiple values
+can be entered separated by a blank.
+
+The scale parameter controls the expected true standardized effect size.
+For a particular scale 50% of the true effect sizes are within the interval. Values corresponding to the
+Bayesian regression procedure are medium: (-.7071, .7071); wide: (-1, 1), and ultrawide: (-1.414, 1.414).
+One or more of these keywords or numbers can be entered.
+</p>
+<p><span class="runinhead">Number of samples</span> Specify the
+number of iterations (samples) to be drawn in calculating the
+posterior distribution.
+</p>
+<p><span class="runinhead">Workspace Action</span> If Retain is selected, the workspace containing the
+results is retained and can be used in an R program in the current session.  Otherwise, the workspace
+is cleared.</p>
+
+<p><span class="runinhead">Save model file</span> Enter a file specification to save
+the workspace results to an R file for later use.</p>
+
+
+<h2>Additional Features</h2>
+<p>
+This dialog generates syntax for the STATS BAYES TTEST extension command. To display syntax help for this command,
+run the following syntax:
+</p>
+<p class="codeblock">STATS BAYES TTEST /HELP.</p>
+<p>In Statistics version 23 or later, you can place the cursor within the command in the Syntax Editor and press F1.</p>
+
+<h2>Acknowledgements</h2>
+<p>This procedure uses the R BayesFactor package.<br/>
+Richard D. Morey and Jeffrey N. Rouder. BayesFactor: Computation of Bayes Factors for
+  Common Designs.<br/>
+The specific package version is indicated in the procedure output.
+</p>
+
+<h2>References</h2>
+<p>For a brief explanation of what a Bayes factor is, see
+http://bayesfactor.blogspot.com/2014/02/the-bayesfactor-package-this-blog-is.html</p>
+
+<h2>Requirements</h2>
+This command requires the R Essentials and the R BayesFactor package
+You can download the Essentials via the SPSS Community website at www.ibm.com/developerworks/spssdevcentral.
+</p>
+  <hr
+  <p style="font-family:Verdana, Arial, sans-serif;font-size:80%;">
+  © Copyright IBM Corp. 2015</p>
+</body>
+</html>
+
