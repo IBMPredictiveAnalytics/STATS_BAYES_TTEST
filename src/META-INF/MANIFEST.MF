@@ -9,7 +9,7 @@ Description: This procedure calculates the Bayes factors and the poste
  against a constant, an unpaired test, or a paired test. The posterior
   distributions for a single prior scale value can also be displayed.
 Author: JKP, IBM SPSS
-Version: 1.0.1
+Version: 1.0.2
 Product-Version: 18
 Date: 9/23/2015
 Categories: statistics, Bayes, ttest
