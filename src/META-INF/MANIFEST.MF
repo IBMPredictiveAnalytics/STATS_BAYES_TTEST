@@ -1,4 +1,5 @@
 Name: STATS BAYES TTEST
+Display-Name: Bayesian T Test
 Dialog-Specs: STATS_BAYES_TTEST.spd
 Command-Specs: STATS_BAYES_TTEST.xml
 Code-Files: STATS_BAYES_TTEST.R
